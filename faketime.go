@@ -32,8 +32,9 @@ func (t Time) UnHook() {
 	monkey.Unpatch(time.Now)
 }
 
-func Date() Time {
-	return Time{}
+func Date(year int, month time.Month, day, hour, min, sec, nsec int, loc *time.Location) Time {
+	t := time.Date(year, month, day, hour, min, sec, nsec, loc)
+	return Time{d: time.Until(t)}
 }
 
 func Unix(timestamp int64) Time {

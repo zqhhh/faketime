@@ -44,3 +44,14 @@ func TestGetRealTime(t *testing.T) {
 	}
 	t.Logf("realTime:  %s", realTime)
 }
+
+func TestDate(t *testing.T) {
+	ftime := Date(1970, 1, 1, 0, 0, 0, 0, time.Local)
+	ftime.Hook()
+	defer ftime.UnHook()
+	hookTime := time.Now()
+	if hookTime.Year() != 1970 || hookTime.Month() != 1 || hookTime.Day() != 1 {
+		t.Errorf("hookTime: %s", hookTime)
+	}
+	t.Logf("hookTime: year=%d,month=%d,day=%d", hookTime.Year(), hookTime.Month(), hookTime.Day())
+}
