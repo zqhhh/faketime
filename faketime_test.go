@@ -32,5 +32,15 @@ func TestUnix(t *testing.T) {
 }
 
 func TestGetRealTime(t *testing.T) {
-
+	now := time.Now()
+	ftime := Add(1 * time.Hour)
+	ftime.Hook()
+	defer ftime.UnHook()
+	realTime := ftime.GetRealTime()
+	got := realTime.Unix()
+	want := now.Unix()
+	if got != want {
+		t.Errorf("got %d want  %d", got, want)
+	}
+	t.Logf("realTime:  %s", realTime)
 }
