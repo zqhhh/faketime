@@ -1,6 +1,8 @@
 # faketime
 > go语言，伪造假时间
 
+**不要在生产环境中使用!**
+
 ### 安装
 go get -v github.com/zqhhh/faketime
 
